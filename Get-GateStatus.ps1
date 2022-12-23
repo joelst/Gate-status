@@ -72,10 +72,8 @@ param (
 
 function Get-GateSchedule {
     <#
-    
-    This will provide the logic for the gate schedule
-
-
+    TODO: This will provide the logic for the gate schedule. So if it is open during a certain time, you may not care to notify. However if it is left open after hours, you may want to 
+    take other actions. 
     #>
     [CmdletBinding()]
     param (
@@ -87,17 +85,26 @@ function Get-GateSchedule {
 }
 
 function Send-TeamsCard {
+    <#
+    .SYNOPSIS
+    Sends a Microsoft Teams adaptive card
+    
+    #>
     [CmdletBinding()]
     param (
+        # Message you want to send in the card
         [Parameter()]
         [string]
         $Message,
+        # Image you want to attach to the adaptive card
         [Parameter()]
         [string]
         $Image,
+        # Webhook URI to post adaptive card.
         [Parameter()]
         [string]
         $Uri,
+        # Container style for the adaptive card to highlight the status.
         [Parameter()]
         [ValidateSet("default", "emphasis", "good", "attention", "warning", "accent")]
         [string]

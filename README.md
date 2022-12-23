@@ -1,5 +1,5 @@
 # gate-status
- PowerShell script to use Microsoft Azure cogni
+ PowerShell script that uses a HTTPS accessible camera and Azure Custom Vision to determine if a gate is opened or closed. It will activate a Microsoft Teams webhook to post any status changes to a Teams channel using an adaptive card.
 
 Get-GateStatus requires an Azure custom vision resource to be setup and trained prior to use. See https://learn.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/get-started-build-detector for more information.
 
