@@ -38,7 +38,8 @@
     Specify if you want to keep all generated files
     .PARAMETER IgnorePreviousStatus
     Specify if you want to ignore the last status. This will make sure to automatically trigger the change condition.
-    
+    .PARAMETER DisableWebhook
+    Specify to ignore the webhook 
 #>
 
 [CmdletBinding()]
@@ -67,7 +68,9 @@ param (
     # Don't cleanup files
     [switch]$NoCleanUp,
     # Use this switch to ignore previous status
-    [switch]$IgnorePreviousStatus
+    [switch]$IgnorePreviousStatus,
+    # Use this to disable the webhook
+    [switch]$DisableWebhook
 )
 
 function Get-GateSchedule {
@@ -222,8 +225,14 @@ if ($CollectOnly.IsPresent -eq $false) {
         Write-Output "`n $CardMessage `n "
         #$b64ThumbImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw="
         # Send the message
+        if ($false -eq $DisableWebhook.IsPresent) {
         Send-TeamsCard -Message $CardMessage -Image $b64ThumbImage -Uri $WebhookUri -ContainerStyle $cardStyle
-        Write-Output "`n    Done - $(Get-Date)`n"
+        #Write-Output "`n    Done - $(Get-Date)`n"
+        }
+        else {
+            Write-Output "DisableWebhook specified - No webhook triggered"
+        }
+        
     }
     else {
         Write-Output "`n`n   Gate status hasn't changed: $HighProbTag - $(Get-Date)`n"
