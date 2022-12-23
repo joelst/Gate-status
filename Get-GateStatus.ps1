@@ -39,7 +39,7 @@
     .PARAMETER IgnorePreviousStatus
     Specify if you want to ignore the last status. This will make sure to automatically trigger the change condition.
     .PARAMETER DisableWebhook
-    Specify to ignore the webhook 
+    Specify if you do not want to trigger the webhook.
 #>
 
 [CmdletBinding()]
@@ -90,7 +90,7 @@ function Get-GateSchedule {
 function Send-TeamsCard {
     <#
     .SYNOPSIS
-    Sends a Microsoft Teams adaptive card
+    Sends a Microsoft Teams adaptive card with the provided message information to the designated uri.
     
     #>
     [CmdletBinding()]
