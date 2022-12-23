@@ -5,7 +5,7 @@
     Get-GateStatus requires an Azure custom vision resource to be setup and trained prior to use. See https://learn.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/get-started-build-detector 
     for more information.
 
-    You will create a new project With the following starting settings:
+    You will create a new project the initial settings:
     - Project type: Classification
     - Domains: Can be General [A1], General, and others
 
